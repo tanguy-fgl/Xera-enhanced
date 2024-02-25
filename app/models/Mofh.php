@@ -1,16 +1,17 @@
-<?php 
+<?php
 use \InfinityFree\MofhClient\Client;
 
 class Mofh extends CI_Model
 {
+	private Client $client;
+	
 	function __construct()
 	{
-		parent::__construct();
 		$this->load->model('mailer');
-		$this->m = new Client;
-		$this->m->setApiUsername($this->get_username());
-		$this->m->setApiPassword($this->get_password());
-		$this->m->setPlan($this->get_package());
+		$this->client = new Client;
+		$this->client->setApiUsername($this->get_username());
+		$this->client->setApiPassword($this->get_password());
+		$this->client->setPlan($this->get_package());
 	}
 
 	function get_username()
@@ -136,7 +137,7 @@ class Mofh extends CI_Model
 	function check_availablity($domain)
 	{
 		try{
-			$req = $this->m->availability(['domain' => $domain]);
+			$req = $this->client->availability(['domain' => $domain]);
 			$res = $req->send();
 			if($res->isSuccessful() == 0 AND strlen($res->getMessage()) > 1)
 			{
@@ -163,7 +164,7 @@ class Mofh extends CI_Model
 			$email = $this->user->get_email();
 			$username = char8($label.':'.$domain.':'.$email.':'.time());
 			$password = substr(char16($username.':'.time()), 0, 15);
-			$req = $this->m->createAccount([
+			$req = $this->client->createAccount([
 				'username' => $username,
 				'password' => $password,
 				'domain' => $domain,
@@ -208,7 +209,7 @@ class Mofh extends CI_Model
 	function change_password($username, $password)
 	{
 		try{
-			$req = $this->m->password([
+			$req = $this->client->password([
 				'username' => $username,
 				'password' => $password,
 				'enabledigest' => 1
@@ -241,7 +242,7 @@ class Mofh extends CI_Model
 	function deactivate_account($username, $reason)
 	{
 		try{
-			$req = $this->m->suspend([
+			$req = $this->client->suspend([
 				'username' => $username,
 				'reason' => $reason
 			]);
@@ -280,7 +281,7 @@ class Mofh extends CI_Model
 	function reactivate_account($username)
 	{
 		try{
-			$req = $this->m->unsuspend([
+			$req = $this->client->unsuspend([
 				'username' => $username
 			]);
 			$res = $req->send();
@@ -318,7 +319,7 @@ class Mofh extends CI_Model
 	function get_domains($username)
 	{
 		try{
-			$req = $this->m->GetUserDomains([
+			$req = $this->client->GetUserDomains([
 				'username' => $username
 			]);
 			$res = $req->send();
@@ -340,7 +341,7 @@ class Mofh extends CI_Model
 	function get_domain_user($domain)
 	{
 		try{
-			$req = $this->m->getDomainUser([
+			$req = $this->client->getDomainUser([
 				'domain' => $domain
 			]);
 			$res = $req->send();
@@ -360,7 +361,7 @@ class Mofh extends CI_Model
 	}
 
 	function list_exts(){
-		$res = $this->fetch('is_domain', [], 'domain_');
+		$res = $this->fetch('is_domain', 'domain_', []);
 		return $res;
 	}
 
@@ -398,7 +399,7 @@ class Mofh extends CI_Model
 	function test_mofh()
 	{
 		try{
-			$req = $this->m->availability(['domain' => 'google.com']);
+			$req = $this->client->availability(['domain' => 'google.com']);
 			$res = $req->send();
 			if($res->isSuccessful() == 0 AND strlen($res->getMessage()) > 1)
 			{
@@ -449,7 +450,7 @@ class Mofh extends CI_Model
 		return false;
 	}
 
-	private function fetch($table, $where = [], $prefix)
+	private function fetch($table, $prefix, $where = [])
 	{
 		$res = $this->base->fetch(
 			$table,

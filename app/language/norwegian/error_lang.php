@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['error_occured'] = 'En feil oppstod. Prøv igjen senere.';
 $lang['required_fields'] = 'Fyll ut alle obligatoriske felt.';

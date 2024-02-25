@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['forget_password'] = '輸入您的郵箱,重設信息將會傳送給你';
 $lang['account_limit'] = '你已經達到最高免費帳戶上線,請升級到';

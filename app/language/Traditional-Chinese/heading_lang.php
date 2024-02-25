@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['login_to_account'] = '登入到我的帳戶';
 $lang['i_forget_password'] = '我忘記密碼';

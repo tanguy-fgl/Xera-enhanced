@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class SitePro extends CI_Model
 {

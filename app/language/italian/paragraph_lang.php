@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['forget_password'] = 'Inserisci il tuo indirizzo email e la tua password verr� resettata e inviata via email a te.';
 $lang['account_limit'] = 'Hai raggiunto il limite di 3 Account di Hosting Gratuito. Perfavore aggiorna il tuo piano per';

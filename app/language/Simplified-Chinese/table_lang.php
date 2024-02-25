@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['id'] = 'ID';
 $lang['username'] = '用户名';

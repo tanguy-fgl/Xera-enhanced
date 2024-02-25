@@ -1,10 +1,9 @@
-<?php 
+<?php
 
 class Ticket extends CI_Model
 {
 	function __construct()
 	{
-		parent::__construct();
 		$this->load->model('user');
 		$this->load->model('mailer');
 	}

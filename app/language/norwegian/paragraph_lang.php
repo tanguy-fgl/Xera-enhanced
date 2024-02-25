@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['forget_password'] = 'Skriv inn e-postadressen din og passordet ditt vil bli tilbakestilt og sendt til deg på e-post.';
 $lang['account_limit'] = 'Du er i ferd med å nå grensen på 3 gratis hostingkontoer per bruker. Vennligst oppgrader til';

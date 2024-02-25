@@ -30,7 +30,7 @@
 					<div class="col-sm-12">
 						<label class="form-label">Theme</label>
 						<select class="form-control mb-2" name="theme">
-							<?php 
+							<?php
 							if(get_cookie('theme', true) == 'light'):
 							?>
 								<option value="light" selected="true">Light</option>

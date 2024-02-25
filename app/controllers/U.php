@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class U extends CI_Controller
 {
@@ -12,7 +12,7 @@ class U extends CI_Controller
 		$this->load->model('mofh');
 		$this->load->model('oauth');
 		$this->load->model(['sitepro' => 'sp']);
-		$this->load->library(['form_validation' => 'fv']);
+		$this->load->library(['signup_form_validation' => 'fv']);
 		$this->load->model(['recaptcha' => 'grc']);
 		if(!$this->base->is_active())
 		{
@@ -165,7 +165,8 @@ class U extends CI_Controller
 			else
 			{
 				$data['title'] = 'register';
-				$this->load->view($this->base->get_template().'/form/includes/user/header.php', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/form/includes/user/header.php');
 				$this->load->view($this->base->get_template().'/form/user/register.php');
 				$this->load->view($this->base->get_template().'/form/includes/user/footer.php');
 			}
@@ -308,7 +309,8 @@ class U extends CI_Controller
 			else
 			{
 				$data['title'] = 'login';
-				$this->load->view($this->base->get_template().'/form/includes/user/header.php', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/form/includes/user/header.php');
 				$this->load->view($this->base->get_template().'/form/user/login.php');
 				$this->load->view($this->base->get_template().'/form/includes/user/footer.php');
 			}
@@ -349,7 +351,8 @@ class U extends CI_Controller
 			else
 			{
 				$data['title'] = 'forget_password';
-				$this->load->view($this->base->get_template().'/form/includes/user/header.php', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/form/includes/user/header.php');
 				$this->load->view($this->base->get_template().'/form/user/forget.php');
 				$this->load->view($this->base->get_template().'/form/includes/user/footer.php');
 			}
@@ -416,7 +419,8 @@ class U extends CI_Controller
 					{
 						$data['title'] = 'reset_password';
 						$data['token'] = $token;
-						$this->load->view($this->base->get_template().'/form/includes/user/header.php', $data);
+						$this->load->vars($data);
+						$this->load->view($this->base->get_template().'/form/includes/user/header.php');
 						$this->load->view($this->base->get_template().'/form/user/reset_password.php');
 						$this->load->view($this->base->get_template().'/form/includes/user/footer.php');	
 					}
@@ -525,7 +529,8 @@ class U extends CI_Controller
 			{
 				$data['title'] = 'settings';
 
-				$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/page/includes/user/header');
 				$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 				$this->load->view($this->base->get_template().'/page/user/settings');
 				$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -546,7 +551,8 @@ class U extends CI_Controller
 			$data['active'] = 'home';
 			$data['list'] = $this->account->get_user_accounts();
 			
-			$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/user/header');
 			$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 			$this->load->view($this->base->get_template().'/page/user/accounts');
 			$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -565,7 +571,8 @@ class U extends CI_Controller
 			$data['active'] = 'ticket';
 			$data['list'] = $this->ticket->get_user_tickets();
 
-			$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/user/header');
 			$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 			$this->load->view($this->base->get_template().'/page/user/tickets');
 			$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -687,7 +694,8 @@ class U extends CI_Controller
 				$data['title'] = 'create_ticket';
 				$data['active'] = 'ticket';
 
-				$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/page/includes/user/header');
 				$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 				$this->load->view($this->base->get_template().'/page/user/create_ticket');
 				$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -860,7 +868,8 @@ class U extends CI_Controller
 				{
 					$data['replies'] = $this->ticket->get_ticket_reply($id);
 
-					$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+					$this->load->vars($data);
+					$this->load->view($this->base->get_template().'/page/includes/user/header');
 					$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 					$this->load->view($this->base->get_template().'/page/user/view_ticket');
 					$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -885,7 +894,8 @@ class U extends CI_Controller
 			$data['active'] = 'account';
 			$data['list'] = $this->account->get_user_accounts();
 			
-			$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/user/header');
 			$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 			$this->load->view($this->base->get_template().'/page/user/accounts');
 			$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -1095,7 +1105,8 @@ class U extends CI_Controller
 					$data['title'] = 'create_account';
 					$data['active'] = 'account';
 
-					$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+					$this->load->vars($data);
+					$this->load->view($this->base->get_template().'/page/includes/user/header');
 					$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 					$this->load->view($this->base->get_template().'/page/user/create_account');
 					$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -1224,7 +1235,8 @@ class U extends CI_Controller
 				$data['data'] = $this->account->get_user_account($id);
 				if($data['data'] !== false)
 				{
-					$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+					$this->load->vars($data);
+					$this->load->view($this->base->get_template().'/page/includes/user/header');
 					$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 					$this->load->view($this->base->get_template().'/page/user/view_account');
 					$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -1295,8 +1307,8 @@ class U extends CI_Controller
 					}
 					else
 					{
-						$this->session->set_flashdata('msg', json_encode([0, 'Unable to delete account.']));
-							redirect("account/settings/$id");
+						$this->session->set_flashdata('msg', json_encode([0, 'Account passwords should have at least 5 characters.']));
+						redirect("account/settings/$id");
 					}
 				}
 				else
@@ -1331,7 +1343,7 @@ class U extends CI_Controller
 					else
 					{
 						$this->session->set_flashdata('msg', json_encode([0, $this->base->text('deactivation_error', 'error')]));
-							redirect("account/settings/$id");
+						redirect("account/settings/$id");
 					}
 				}
 				else
@@ -1348,7 +1360,8 @@ class U extends CI_Controller
 				$data['data'] = $this->account->get_user_account($id);
 				if($data['data'] !== false)
 				{
-					$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+					$this->load->vars($data);
+					$this->load->view($this->base->get_template().'/page/includes/user/header');
 					$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 					$this->load->view($this->base->get_template().'/page/user/account_settings');
 					$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -1365,9 +1378,9 @@ class U extends CI_Controller
 		}
 	}
 
-	function domain_checker($domain = false)
+	function domain_checker()
 	{
-		$domain = $this->security->xss_clean($domain);
+		$domain = $this->input->post_get('domain', TRUE) ?: "";
 		$domain = strtolower($domain);
 		if($this->user->is_logged())
 		{
@@ -1383,7 +1396,8 @@ class U extends CI_Controller
 			}
 			$data['domain'] = $domain;
 
-			$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/user/header');
 			$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 			$this->load->view($this->base->get_template().'/page/user/domain_checker');
 			$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -1404,7 +1418,8 @@ class U extends CI_Controller
 				$data['active'] = 'ssl';
 				$data['list'] = $this->ssl->get_ssl_list();
 				
-				$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/page/includes/user/header');
 				$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 				$this->load->view($this->base->get_template().'/page/user/ssl');
 				$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -1475,13 +1490,13 @@ class U extends CI_Controller
 							else
 							{
 								$this->session->set_flashdata('msg', json_encode([0, $this->base->text('error_occured', 'error')]));
-								redirect('u/create_ssl');
+								redirect('ssl/create');
 							}
 						}
 						else
 						{
 							$this->session->set_flashdata('msg', json_encode([0, $this->base->text('captcha_error', 'error')]));
-							redirect('u/create_ssl');
+							redirect('ssl/create');
 						}
 					}
 					else
@@ -1494,7 +1509,7 @@ class U extends CI_Controller
 						{
 							$this->session->set_flashdata('msg', json_encode([0, $this->base->text('required_fields', 'error')]));
 						}
-						redirect('u/create_ssl');
+						redirect('ssl/create');
 					}
 				}
 				else
@@ -1516,7 +1531,7 @@ class U extends CI_Controller
 						else
 						{
 							$this->session->set_flashdata('msg', json_encode([0, $this->base->text('error_occured', 'error')]));
-							redirect('u/create_ssl');
+							redirect('ssl/create');
 						}
 					}
 					else
@@ -1529,7 +1544,7 @@ class U extends CI_Controller
 						{
 							$this->session->set_flashdata('msg', json_encode([0, $this->base->text('required_fields', 'error')]));
 						}
-						redirect('u/create_ssl');
+						redirect('ssl/create');
 					}
 				}
 			}
@@ -1540,7 +1555,8 @@ class U extends CI_Controller
 					$data['title'] = 'create_ssl';
 					$data['active'] = 'ssl';
 
-					$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+					$this->load->vars($data);
+					$this->load->view($this->base->get_template().'/page/includes/user/header');
 					$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 					$this->load->view($this->base->get_template().'/page/user/create_ssl');
 					$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -1606,7 +1622,8 @@ class U extends CI_Controller
 					$data['data'] = $this->ssl->get_ssl_info($id);
 					if($data['data'] !== false)
 					{
-						$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+						$this->load->vars($data);
+						$this->load->view($this->base->get_template().'/page/includes/user/header');
 						$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 						$this->load->view($this->base->get_template().'/page/user/view_ssl');
 						$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -1652,8 +1669,10 @@ class U extends CI_Controller
 				'TXT' => DNS_TXT,
 				'MX' => DNS_MX,
 				'NS' => DNS_NS,
+				/* To be added later
 				'CAA' => DNS_CAA,
 				'SOA' => DNS_SOA
+				*/
 			];
 			$data['fields'] = [
 				'A' => [
@@ -1678,7 +1697,7 @@ class U extends CI_Controller
 					'host' => $this->base->text('host', 'table'),
 					'type' => $this->base->text('type', 'table'),
 					'ttl' => $this->base->text('ttl', 'table'),
-					'content' => $this->base->text('content', 'table')
+					'txt' => $this->base->text('content', 'table')
 				],
 				'MX' => [
 					'host' => $this->base->text('host', 'table'),
@@ -1695,7 +1714,8 @@ class U extends CI_Controller
 				],
 			];
 
-			$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/user/header');
 			$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 			$this->load->view($this->base->get_template().'/page/user/dns_lookup');
 			$this->load->view($this->base->get_template().'/page/includes/user/footer');
@@ -1713,7 +1733,8 @@ class U extends CI_Controller
 			$data['title'] = 'whois_lookup';
 			$this->load->helper('whois');
 
-			$this->load->view($this->base->get_template().'/page/includes/user/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/user/header');
 			$this->load->view($this->base->get_template().'/page/includes/user/navbar');
 			$this->load->view($this->base->get_template().'/page/user/whois_lookup');
 			$this->load->view($this->base->get_template().'/page/includes/user/footer');

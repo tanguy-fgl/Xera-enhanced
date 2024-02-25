@@ -35,7 +35,7 @@ $config['base_url'] = 'BASE_URL_VALUE';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -448,7 +448,7 @@ $config['global_xss_filtering'] = TRUE;
 | 'csrf_regenerate' = Regenerate token on every submission
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
-$config['csrf_protection'] = CSRF_PROTECTION_MODE;
+$config['csrf_protection'] = 'CSRF_PROTECTION_MODE';
 $config['csrf_token_name'] = 'COOKIE_PREFIX_VALUEcsrf_token';
 $config['csrf_cookie_name'] = 'csrf_cookie';
 $config['csrf_expire'] = 7200;

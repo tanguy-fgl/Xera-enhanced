@@ -224,7 +224,7 @@ function getWhoisServerDetails($whoIsServer, $domain) {
 		$whoIsRecords = explode("\n", $output);
 		foreach($whoIsRecords as $whoIsRecord) {
 			$whoIsRecord = trim($whoIsRecord);
-			if(($whoIsRecord != '') && ($whoIsRecord{0} != '#') && ($whoIsRecord{0} != '%')) {
+			if(($whoIsRecord != '') && ($whoIsRecord[0] != '#') && ($whoIsRecord[0] != '%')) {
 				$whosIsResults .= $whoIsRecord."\n";
 			}
 		}

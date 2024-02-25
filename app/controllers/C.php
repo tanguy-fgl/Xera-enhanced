@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class C extends CI_Controller
 {
@@ -205,7 +205,7 @@ class C extends CI_Controller
 			if(isset($adata['error']))
 			{
 				$this->session->set_flashdata('msg', json_encode([0, $this->base->text('invalid_oauth_key', 'error')]));
-				redirect('u/login');
+				redirect('login');
 			}
 			else
 			{
@@ -220,7 +220,7 @@ class C extends CI_Controller
 				if(isset($udata['error']))
 				{
 					$this->session->set_flashdata('msg', json_encode([0, $this->base->text('invalid_oauth_key', 'error')]));
-					redirect('u/login');
+					redirect('login');
 				}
 				else
 				{
@@ -243,12 +243,12 @@ class C extends CI_Controller
 						if($res !== false)
 						{
 							$this->session->set_flashdata('msg', json_encode([1, $this->base->text('login_msg', 'success')]));
-							redirect('u/login');
+							redirect('login');
 						}
 						else
 						{
 							$this->session->set_flashdata('msg', json_encode([0, $this->base->text('error_occured', 'error')]));
-							redirect('u/login');
+							redirect('login');
 						}
 					}
 					else
@@ -261,18 +261,18 @@ class C extends CI_Controller
 							if($res !== false)
 							{
 								$this->session->set_flashdata('msg', json_encode([1, $this->base->text('login_msg', 'success')]));
-								redirect('u/login');
+								redirect('login');
 							}
 							else
 							{
 								$this->session->set_flashdata('msg', json_encode([0, $this->base->text('error_occured', 'error')]));
-								redirect('u/login');
+								redirect('login');
 							}
 						}
 						else
 						{
 							$this->session->set_flashdata('msg', json_encode([0, $this->base->text('oauth_msg', 'error')]));
-							redirect('u/login');
+							redirect('login');
 						}
 
 					}

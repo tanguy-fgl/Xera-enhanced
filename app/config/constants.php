@@ -92,9 +92,9 @@ defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest auto
 | These constants define the build information of Xera
 |
 */
-defined('XERA_VERSION')        or define('XERA_VERSION', '1.2.8'); // build version
-defined('XERA_TAG')            or define('XERA_TAG', 'Hollow'); // build tag
-defined('XERA_DATE')        or define('XERA_DATE', '23-08-2022'); // build date
+defined('XERA_VERSION')        or define('XERA_VERSION', '1.2.8r1'); // build version
+defined('XERA_TAG')            or define('XERA_TAG', 'Vim'); // build tag
+defined('XERA_DATE')        or define('XERA_DATE', '25-10-2022'); // build date
 defined('XERA_AFFL')        or define('XERA_AFFL', 123456); // iFastNet affiliate id
 
 /*
@@ -102,10 +102,10 @@ defined('XERA_AFFL')        or define('XERA_AFFL', 123456); // iFastNet affiliat
 | Hashing Algorithum
 |--------------------------------------------------------------------------
 |
-| These constants define the hashing algos fors Xera
+| These constants define the hashing algos for Xera
 |
 */
-defined("HASH_ALGO_64")        or define('HASH_ALGO_64', 'sha256'); // 64 charatchers hashing algo
-defined("HASH_ALGO_32")        or define('HASH_ALGO_32', 'haval128,3'); // 32 charatchers hashing algo
-defined("HASH_ALGO_16")        or define('HASH_ALGO_16', 'fnv1a64'); // 16 charatchers hashing algo
-defined("HASH_ALGO_8")        or define('HASH_ALGO_8', 'crc32'); // 8 charatchers hashing algo
+defined("HASH_ALGO_64")        or define('HASH_ALGO_64', 'sha256'); // 64 characters hashing algo
+defined("HASH_ALGO_32")        or define('HASH_ALGO_32', 'haval128,3'); // 32 characters hashing algo
+defined("HASH_ALGO_16")        or define('HASH_ALGO_16', 'fnv1a64'); // 16 characters hashing algo
+defined("HASH_ALGO_8")        or define('HASH_ALGO_8', 'crc32'); // 8 characters hashing algo

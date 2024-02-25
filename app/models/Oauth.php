@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Oauth extends CI_Model
 {

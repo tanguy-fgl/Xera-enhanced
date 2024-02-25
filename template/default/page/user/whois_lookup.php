@@ -13,7 +13,7 @@
 				<div class="mb-0">
 					<div class="row">
 						<div class="col-md-12">
-							<input type="text" name="domain" class="form-control mb-2" placeholder="<?= $this->base->text('domain_name', 'label') ?>" value="<?php if ($this->input->get('domain') !== false): echo(strtolower($this->input->get('domain')));endif ?>" required>
+							<input type="text" name="domain" class="form-control mb-2" placeholder="<?= $this->base->text('domain_name', 'label') ?>" value="<?php if (!is_null($this->input->get('domain'))): echo(strtolower($this->input->get('domain')));endif ?>" required>
 						</div>
 					</div>
 					<input name="lookup" type="submit" class="btn btn-primary" value="<?= $this->base->text('lookup', 'button') ?>">

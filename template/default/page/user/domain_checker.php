@@ -11,20 +11,21 @@
 					<div class="card-title"><?= $this->base->text($title, 'title') ?></div>
 				</div>
 				<div class="card-body">
-					<div class="form">
+					<form method="post" class="form">
 						<div class="mb-0">
 							<div class="row g-2">
+								<input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
 								<div class="col">
 									<input type="text" name="domain" class="form-control" placeholder="<?= $this->base->text('domain_name', 'label') ?>" id="domain" value="<?php if ($domain !== false): 
 											echo($domain);
 									 	endif ?>">
 								</div>
 								<div class="col-auto">
-									<a href="#" id="search" class="btn btn-primary"><?= $this->base->text('search', 'button') ?></a>
+									<input type="submit" id="search" class="btn btn-primary" value="<?= $this->base->text('search', 'button') ?>"></input>
 								</div>
 							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -39,36 +40,42 @@
 							<?= $this->base->text('search_note', 'paragraph') ?>
 						</div>
 					<?php elseif ($data !== false): ?>
-						<table class="table card-table table-transparent">
-							<tr>
-								<td><?= $this->base->text('account', 'heading') ?></td>
-								<td><?= $data[3] ?></td>
-							</tr>
-							<tr>
-								<td><?= $this->base->text('status', 'heading') ?></td>
-								<td><?= $data[0] ?></td>
-							</tr>
-							<tr>
-								<td><?= $this->base->text('nameserver', 'heading') ?> 1</td>
-								<td>
-									<?php if ($data[0] === 'ACTIVE'): ?>
-										<?= $this->base->text('ok', 'label') ?>
-									<?php else: ?>
-										<?= $this->base->text('error', 'label') ?>
-									<?php endif ?>
-								</td>
-							</tr>
-							<tr>
-								<td><?= $this->base->text('nameserver', 'heading') ?> 2</td>
-								<td>
-									<?php if ($data[0] === 'ACTIVE'): ?>
-										<?= $this->base->text('ok', 'label') ?>
-									<?php else: ?>
-										<?= $this->base->text('error', 'label') ?>
-									<?php endif ?>
-								</td>
-							</tr>
-						</table>
+						<?php if(is_null($data)): ?>
+                            <div class="card-body">
+                                This domain does not appear to be hosted with us.
+                            </div>
+                        <?php else: ?>
+                            <table class="table card-table table-transparent">
+                                <tr>
+                                    <td><?= $this->base->text('account', 'heading') ?></td>
+                                    <td><?= $data[3] ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?= $this->base->text('status', 'heading') ?></td>
+                                    <td><?= $data[0] ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?= $this->base->text('nameserver', 'heading') ?> 1</td>
+                                    <td>
+                                        <?php if ($data[0] === 'ACTIVE'): ?>
+                                            <?= $this->base->text('ok', 'label') ?>
+                                        <?php else: ?>
+                                            <?= $this->base->text('error', 'label') ?>
+                                        <?php endif ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><?= $this->base->text('nameserver', 'heading') ?> 2</td>
+                                    <td>
+                                        <?php if ($data[0] === 'ACTIVE'): ?>
+                                            <?= $this->base->text('ok', 'label') ?>
+                                        <?php else: ?>
+                                            <?= $this->base->text('error', 'label') ?>
+                                        <?php endif ?>
+                                    </td>
+                                </tr>
+                            </table>
+                        <?php endif ?>
 					<?php else: ?>
 						<div class="card-body">
 							<?= $this->base->text('search_error', 'paragraph') ?>
@@ -79,10 +86,3 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	var domain = document.getElementById('domain');
-	domain.onchange = function(){
-		var search = document.getElementById('search');
-		search.href = '<?= base_url() ?>' + 'domain/checker/' + domain.value;
-	}
-</script>

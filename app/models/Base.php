@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if(!file_exists(APPPATH.'logs/install.json'))
 {
@@ -204,9 +204,7 @@ class Base extends CI_Model
 	{
 		$data = remap_array($prefix, $data);
 		$where = remap_array($prefix, $where);
-		$this->db->where($where);
-		$this->db->set($data);
-		$res = $this->db->update($table);
+		$res = $this->db->update($table, $data, $where);
 		if($res)
 		{
 			return true;

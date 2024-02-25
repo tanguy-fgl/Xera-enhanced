@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Smtp extends CI_Model
 {

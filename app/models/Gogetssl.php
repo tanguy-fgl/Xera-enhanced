@@ -1,13 +1,14 @@
-<?php 
+<?php
 
 class Gogetssl extends CI_Model
 {
+	private GoGetSSLApi $api;
+
 	function __construct()
 	{
-		parent::__construct();
 		$this->load->library('gogetsslapi');
-		$this->s = new GoGetSSLApi();
-		$this->s->auth($this->get_username(), $this->get_password());
+		$this->api = new GoGetSSLApi();
+		$this->api->auth($this->get_username(), $this->get_password());
 	}
 
 	function create_ssl($csr)
@@ -39,7 +40,7 @@ class Gogetssl extends CI_Model
 		    'org_region'       => "None",
 		    'dcv_method'       => "dns",
 		);
-		$res = $this->s->addSSLOrder($data);
+		$res = $this->api->addSSLOrder($data);
 		if(count($res) > 4)
 		{
 			$key = $username = char8($this->base->get_hostname().':'.$this->user->get_email().':'.$res['order_id'].':'.time());
@@ -71,7 +72,7 @@ class Gogetssl extends CI_Model
 		$res = $this->fetch(['key' => $key]);
 		if($res !== [])
 		{
-			$data = $this->s->getOrderStatus($res[0]['ssl_pid']);
+			$data = $this->api->getOrderStatus($res[0]['ssl_pid']);
 			if(count($data) > 4)
 			{
 				return $data;
@@ -98,7 +99,7 @@ class Gogetssl extends CI_Model
 			if(count($res)>0)
 			{
 				foreach ($res as $key) {
-					$data = $this->s->getOrderStatus($key['ssl_pid']);
+					$data = $this->api->getOrderStatus($key['ssl_pid']);
 					$data['key'] = $key['ssl_key'];
 					$arr[] = $data;
 				}
@@ -118,7 +119,7 @@ class Gogetssl extends CI_Model
 			if(count($res)>0)
 			{
 				foreach ($res as $key) {
-					$data = $this->s->getOrderStatus($key['ssl_pid']);
+					$data = $this->api->getOrderStatus($key['ssl_pid']);
 					$data['key'] = $key['ssl_key'];
 					$arr[] = $data;
 				}
@@ -157,7 +158,7 @@ class Gogetssl extends CI_Model
 			if(count($res)>0)
 			{
 				foreach ($res as $key) {
-					$data = $this->s->getOrderStatus($key['ssl_pid']);
+					$data = $this->api->getOrderStatus($key['ssl_pid']);
 					$data['key'] = $key['ssl_key'];
 					$arr[] = $data;
 				}
@@ -172,7 +173,7 @@ class Gogetssl extends CI_Model
 		$res = $this->fetch(['key' => $key]);
 		if($res !== false)
 		{
-			$data = $this->s->cancelSSLOrder($res[0]['ssl_pid'], $reason);
+			$data = $this->api->cancelSSLOrder($res[0]['ssl_pid'], $reason);
 			if(isset($data['success']))
 			{
 				return true;

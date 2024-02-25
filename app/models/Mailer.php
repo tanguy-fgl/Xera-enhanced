@@ -1,10 +1,9 @@
-<?php 
+<?php
 
 class Mailer extends CI_Model
 {
 	function __construct()
 	{
-		parent::__construct();
 		$this->load->model('smtp');
 		$this->load->library('email');
 

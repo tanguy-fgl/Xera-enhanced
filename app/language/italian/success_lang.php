@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['login_msg'] = 'Entrato con successo.';
 $lang['register_msg'] = 'Utente registrato con successo.';

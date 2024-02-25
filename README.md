@@ -40,6 +40,11 @@ Your server needs to meet the following minimum requirements to run Xera:
 - MySQL v5.7 or above.
 - A valid, trusted SSL certificate.
 
+Additionally, the server assumes you can use Apache's ``mod_rewrite`` to allow pretty URLs. If you do not, you'll need to replace the ``index_page`` setting in ``app/config/config.php``:
+```php
+$config['index_page'] = 'index.php';
+```
+
 ### 💾 Installation 
 The installation of Xera is much easier than you think!
 - Download the Xera installation files [here](https://github.com/mahtab2003/Xera/releases/latest). Alternatively, if you want the latest development version you can get it [here](https://github.com/mahtab2003/Xera/archive/refs/heads/dev.zip).
@@ -62,8 +67,7 @@ Here are some widely used SMTP services. They have free plans with some limitati
 - [SendGrid](https://sendgrid.com/free/).
 
 ### 🤔 Help
-If you require assistance, please proceed to [our forum](https://fourm.xera.eu.org/) (no longer working), where you can find the answers to many questions and also ask your own.  
-You can also [open an issue here](https://github.com/mahtab2003/Xera/issues/new) if you have discovered a bug or have an issue, although the forum is still the preferred way, especially for feature requests. In any way, please ensure your topic has not been previously discussed, and if it has contribute to that discussion instead of making a new one when you can.
+If you require assistance, please [open an issue here](https://github.com/mahtab2003/Xera/issues/new) if you have discovered a bug, have an issue or a feature request. Please ensure your topic has not been previously discussed, and if it has contribute to that discussion instead of making a new one when you can.
 
 ### 🚴‍♂️ TO-DO List
 - Self-signed SSL certificates Module for Xera (Pending).

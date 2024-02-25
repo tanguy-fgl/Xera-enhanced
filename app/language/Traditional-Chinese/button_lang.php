@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['signin'] = '登入帳戶';
 $lang['register'] = '註冊';

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class A extends CI_Controller
 {
@@ -13,7 +13,7 @@ class A extends CI_Controller
 		$this->load->model(['sitepro' => 'sp']);
 		$this->load->model('mofh');
 		$this->load->model('oauth');
-		$this->load->library(['form_validation' => 'fv']);
+		$this->load->library(['signup_form_validation' => 'fv']);
 		$this->load->model(['recaptcha' => 'grc']);
 		if(!get_cookie('theme'))
 		{
@@ -162,7 +162,8 @@ class A extends CI_Controller
 			else
 			{
 				$data['title'] = 'Register';
-				$this->load->view($this->base->get_template().'/form/includes/admin/header.php', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/form/includes/admin/header.php');
 				$this->load->view($this->base->get_template().'/form/admin/register.php');
 				$this->load->view($this->base->get_template().'/form/includes/admin/footer.php');
 			}
@@ -300,7 +301,8 @@ class A extends CI_Controller
 			else
 			{
 				$data['title'] = 'Login';
-				$this->load->view($this->base->get_template().'/form/includes/admin/header.php', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/form/includes/admin/header.php');
 				$this->load->view($this->base->get_template().'/form/admin/login.php');
 				$this->load->view($this->base->get_template().'/form/includes/admin/footer.php');
 			}
@@ -341,7 +343,8 @@ class A extends CI_Controller
 			else
 			{
 				$data['title'] = 'Login';
-				$this->load->view($this->base->get_template().'/form/includes/admin/header.php', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/form/includes/admin/header.php');
 				$this->load->view($this->base->get_template().'/form/admin/forget.php');
 				$this->load->view($this->base->get_template().'/form/includes/admin/footer.php');
 			}
@@ -408,7 +411,8 @@ class A extends CI_Controller
 					{
 						$data['title'] = 'Reset Password';
 						$data['token'] = $token;
-						$this->load->view($this->base->get_template().'/form/includes/admin/header.php', $data);
+						$this->load->vars($data);
+						$this->load->view($this->base->get_template().'/form/includes/admin/header.php');
 						$this->load->view($this->base->get_template().'/form/admin/reset_password.php');
 						$this->load->view($this->base->get_template().'/form/includes/admin/footer.php');	
 					}
@@ -515,8 +519,8 @@ class A extends CI_Controller
 			else
 			{
 				$data['title'] = 'Settings';
-
-				$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/page/includes/admin/header');
 				$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 				$this->load->view($this->base->get_template().'/page/admin/settings');
 				$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -821,8 +825,8 @@ class A extends CI_Controller
 			{
 				$data['title'] = 'API Settings';
 				$data['active'] = 'settings';
-
-				$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/page/includes/admin/header');
 				$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 				$this->load->view($this->base->get_template().'/page/admin/api_settings');
 				$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -845,7 +849,8 @@ class A extends CI_Controller
 			$data['ci_tickets'] = count($this->ticket->get_tickets());
 			$data['ci_templates'] = count($this->mailer->get_user_templates());
 
-			$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/admin/header');
 			$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 			$this->load->view($this->base->get_template().'/page/admin/dashboard');
 			$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -864,7 +869,8 @@ class A extends CI_Controller
 			$data['active'] = 'settings';
 			$data['list'] = $this->mailer->get_user_templates();
 			
-			$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/admin/header');
 			$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 			$this->load->view($this->base->get_template().'/page/admin/email_templates');
 			$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -919,7 +925,8 @@ class A extends CI_Controller
 				$data['active'] = 'email';
 				$data['email'] = $this->mailer->get_template($id);
 				
-				$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/page/includes/admin/header');
 				$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 				$this->load->view($this->base->get_template().'/page/admin/edit_email');
 				$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -940,7 +947,8 @@ class A extends CI_Controller
 			$count = $this->input->get('page') ?? 0;
 			$data['list'] = $this->ticket->get_tickets($count);
 
-			$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/admin/header');
 			$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 			$this->load->view($this->base->get_template().'/page/admin/tickets');
 			$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -1091,7 +1099,8 @@ class A extends CI_Controller
 				{
 					$data['replies'] = $this->ticket->get_ticket_reply($id);
 
-					$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+					$this->load->vars($data);
+					$this->load->view($this->base->get_template().'/page/includes/admin/header');
 					$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 					$this->load->view($this->base->get_template().'/page/admin/view_ticket');
 					$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -1117,7 +1126,8 @@ class A extends CI_Controller
 			$count = $this->input->get('page') ?? 0;
 			$data['list'] = $this->user->list_users($count);
 
-			$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/admin/header');
 			$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 			$this->load->view($this->base->get_template().'/page/admin/clients');
 			$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -1152,7 +1162,7 @@ class A extends CI_Controller
 				if($res)
 				{
 					$this->session->set_flashdata('msg', json_encode([1, 'Logged in successfully.']));
-					redirect("a/");
+					redirect("user");
 				}
 				else
 				{
@@ -1167,7 +1177,8 @@ class A extends CI_Controller
 				$data['info'] = $this->user->get_info($id);
 				if($data['info'] !== false)
 				{
-					$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+					$this->load->vars($data);
+					$this->load->view($this->base->get_template().'/page/includes/admin/header');
 					$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 					$this->load->view($this->base->get_template().'/page/admin/view_client');
 					$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -1221,7 +1232,8 @@ class A extends CI_Controller
 				$data['active'] = 'settings';
 				$data['list'] = $this->mofh->list_exts();
 
-				$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+				$this->load->vars($data);
+				$this->load->view($this->base->get_template().'/page/includes/admin/header');
 				$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 				$this->load->view($this->base->get_template().'/page/admin/domains');
 				$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -1242,7 +1254,8 @@ class A extends CI_Controller
 			$count = $this->input->get('page') ?? 0;
 			$data['list'] = $this->account->get_accounts($count);
 			
-			$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/admin/header');
 			$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 			$this->load->view($this->base->get_template().'/page/admin/accounts');
 			$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -1355,7 +1368,8 @@ class A extends CI_Controller
 				$data['data'] = $this->account->get_account($id);
 				if($data['data'] !== false)
 				{
-					$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+					$this->load->vars($data);
+					$this->load->view($this->base->get_template().'/page/includes/admin/header');
 					$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 					$this->load->view($this->base->get_template().'/page/admin/view_account');
 					$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -1411,7 +1425,7 @@ class A extends CI_Controller
 						if(!is_bool($res))
 						{
 							$this->session->set_flashdata('msg', json_encode([0, $res]));
-							redirect("a/view_settings/$id");
+							redirect("admin/account/settings/$id");
 						}
 						elseif($res !== false)
 						{
@@ -1452,7 +1466,7 @@ class A extends CI_Controller
 						elseif($res !== false)
 						{
 							$this->session->set_flashdata('msg', json_encode([1, 'Account deactivated successfully.']));
-							redirect("a/accounts");
+							redirect("admin/account/list");
 						}
 						else
 						{
@@ -1480,7 +1494,8 @@ class A extends CI_Controller
 				$data['data'] = $this->account->get_account($id);
 				if($data['data'] !== false)
 				{
-					$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+					$this->load->vars($data);
+					$this->load->view($this->base->get_template().'/page/includes/admin/header');
 					$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 					$this->load->view($this->base->get_template().'/page/admin/account_settings');
 					$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -1506,7 +1521,8 @@ class A extends CI_Controller
 			$count = $this->input->get('page') ?? 0;
 			$data['list'] = $this->ssl->get_ssl_list_all($count);
 			
-			$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+			$this->load->vars($data);
+			$this->load->view($this->base->get_template().'/page/includes/admin/header');
 			$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 			$this->load->view($this->base->get_template().'/page/admin/ssl');
 			$this->load->view($this->base->get_template().'/page/includes/admin/footer');
@@ -1564,7 +1580,8 @@ class A extends CI_Controller
 				$data['data'] = $this->ssl->get_ssl_info($id);
 				if($data['data'] !== false)
 				{
-					$this->load->view($this->base->get_template().'/page/includes/admin/header', $data);
+					$this->load->vars($data);
+					$this->load->view($this->base->get_template().'/page/includes/admin/header');
 					$this->load->view($this->base->get_template().'/page/includes/admin/navbar');
 					$this->load->view($this->base->get_template().'/page/admin/view_ssl');
 					$this->load->view($this->base->get_template().'/page/includes/admin/footer');

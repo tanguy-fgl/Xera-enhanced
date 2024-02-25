@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['email_address'] = '电子邮件';
 $lang['username'] = '用户名';

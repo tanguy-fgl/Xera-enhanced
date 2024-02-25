@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['login_msg'] = '成功登入';
 $lang['register_msg'] = '成功註冊.';

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['id'] = 'ΑΝΑΓΝΩΡΙΣΤΙΚΟ (ID)';
 $lang['username'] = 'ΟΝΟΜΑ';

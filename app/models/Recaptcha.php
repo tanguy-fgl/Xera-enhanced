@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Recaptcha extends CI_Model
 {

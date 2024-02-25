@@ -1,10 +1,9 @@
-<?php 
+<?php
 
 class Account extends CI_Model
 {
 	function __construct()
 	{
-		parent::__construct();
 		$this->load->model('mofh');
 	}
 
@@ -108,7 +107,7 @@ class Account extends CI_Model
 				elseif($res !== false)
 				{
 				    $data = ['password' => $password];
-					$where = ['key' => $username];
+					$where = ['username' => $username];
 					$res = $this->base->update($data, $where, 'is_account', 'account_');
 					if($res !== false)
 					{
@@ -227,17 +226,12 @@ class Account extends CI_Model
 
 	private function update($data, $where)
 	{
-		$res = $this->base->update(
+		return $this->base->update(
 			$data,
 			$where,
 			'is_account',
 			'account_'
 		);
-		if(count($res) > 0)
-		{
-			return $res;
-		}
-		return false;
 	}
 
 	private function fetch($where = [])

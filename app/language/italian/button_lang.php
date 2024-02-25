@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['signin'] = 'Accedi';
 $lang['register'] = 'Registrati';

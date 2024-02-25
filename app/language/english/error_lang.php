@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $lang['error_occured'] = 'An error occured. Try again later.';
 $lang['required_fields'] = 'Please fill all required fields.';
