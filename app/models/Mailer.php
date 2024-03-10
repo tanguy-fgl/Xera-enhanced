@@ -7,10 +7,20 @@ class Mailer extends CI_Model
 		$this->load->model('smtp');
 		$this->load->library('email');
 
+		// SMTP init
+		$email['protocol'] = 'smtp';
 		$email['smtp_host'] = $this->smtp->get_hostname();
+		// Remove this line if you are not using a secured SMTP server, otherwise it will not work
+		$email['smtp_crypto'] = 'ssl';
+
+		// SMTP Login
 		$email['smtp_user'] = $this->smtp->get_username();
 		$email['smtp_pass'] = $this->smtp->get_password();
 		$email['smtp_port'] = $this->smtp->get_port();
+		
+		// Added support for HTML mail
+		$email['mailtype'] = 'html';
+		$email['charset'] = 'utf-8';
 
 		$this->email->initialize($email);
 	}
