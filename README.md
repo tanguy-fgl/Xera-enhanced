@@ -78,24 +78,30 @@ If you require assistance, please [open an issue here](https://github.com/FuryCr
 
 ### 🚴‍♂️ TO-DO List
 - [x] PHP 8.2 support, thanks to [4yx](https://github.com/4yx)
-- [x] Auto theme selector
-- [x] Auto language
-- [ ] Full Tabler theme
-- [ ] Better update system
+- [x] Auto theme selection by navigator preferences
+- [x] Auto language selection by navigator preferences
+- [ ] Full Tabler theme integration
+- [ ] Better update system using Github API
 - [ ] News system with notifications
-- [ ] API
+- [ ] API (clients & websites hosted counter)
 - [ ] Self-signed SSL certificates Module for Xera.
 - [ ] Update SMTP Module (Codeignitor 3).
-- [ ] Ai support assistant
+- [ ] AI support assistant
 - [ ] PWA support
 - [ ] Better loading times
-- [ ] Discord auth
+- [ ] Discord, Google & Apple auth
+- [ ] Discord and Xera enhanced sync (roles for users..., webhooks)
 - [ ] Personal account deletion
 - [ ] Multiple plans
-- [ ] Better SEO
+- [ ] Better SEO (description on pages, canonical url, ...)
+- [ ] Invoices
+- [ ] SSL added to cPanel automatically
+- [ ] Domain shop (using iFastNet shop and affiliate id)
+- [ ] Premium hosting shop (using iFastNet shop and affiliate id)
+- [ ] VPS hosting shop (using iFastNet shop and affiliate id)
 
-### 👍Like Xera?
-If you like project Xera please donate [here](https://paypal.me/tanguyfgl).
+### 👍Like Xera Enhanced?
+If you like project Xera Enhanced please donate [here](https://paypal.me/tanguyfgl).
 
 ## ©️ Copyright
-This build is created and maintained by [Tanguy Frageul](https://github.com/FuryCraft), originally crée par [Mehtab Hassan](https://github.com/mahtab2003). Code released under [the GPL-2.0 license](LICENSE).
+This build is created and maintained by [Tanguy Frageul](https://github.com/FuryCraft), originally created by [Mehtab Hassan](https://github.com/mahtab2003). Code released under [the GPL-2.0 license](LICENSE).
