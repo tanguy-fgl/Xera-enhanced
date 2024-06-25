@@ -80,12 +80,13 @@ If you require assistance, please [open an issue here](https://github.com/FuryCr
 - [x] PHP 8.2 support, thanks to [4yx](https://github.com/4yx)
 - [x] Auto theme selection by navigator preferences
 - [x] Auto language selection by navigator preferences
+- [x] Support for secured SMTP servers
+- [x] Support for HTML emails
 - [ ] Full Tabler theme integration
 - [ ] Better update system using Github API
 - [ ] News system with notifications
 - [ ] API (clients & websites hosted counter)
 - [ ] Self-signed SSL certificates Module for Xera.
-- [ ] Update SMTP Module (Codeignitor 3).
 - [ ] AI support assistant
 - [ ] PWA support
 - [ ] Better loading times
